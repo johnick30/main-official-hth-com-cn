@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>有序索引 · 华体会</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9fc;
+      color: #1a2e3b;
+      line-height: 1.7;
+      padding: 2rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 序言 – 短句开场 */
+    .prologue {
+      text-align: center;
+      padding: 1.8rem 0.5rem 0.8rem;
+    }
+    .prologue span {
+      display: inline-block;
+      background: #d0e9ee;
+      color: #0f4b5a;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      padding: 0.2rem 1.2rem;
+      border-radius: 30px;
+      margin-bottom: 0.6rem;
+    }
+    .prologue h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #0b3b47;
+    }
+    .prologue h1 em {
+      font-style: normal;
+      color: #1d7a8a;
+      font-weight: 600;
+    }
+    .prologue .tagline {
+      max-width: 480px;
+      margin: 0.6rem auto 0;
+      font-size: 1rem;
+      color: #3e5b65;
+      background: rgba(255,255,255,0.6);
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+    }
+
+    /* 承接段落 – 从资料整理角度 */
+    .bridge {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      margin: 1.8rem 0 2.2rem;
+      box-shadow: 0 6px 18px rgba(23, 98, 110, 0.06);
+      border-left: 6px solid #5fb6c7;
+    }
+    .bridge p {
+      margin-bottom: 1.2rem;
+    }
+    .bridge p:last-child {
+      margin-bottom: 0;
+    }
+    .bridge a {
+      color: #116d7e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #71bccc;
+      transition: border-color 0.2s;
+    }
+    .bridge a:hover {
+      border-bottom: 2px solid #1d7a8a;
+    }
+
+    /* 网格卡片 – 特点列表 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.4rem;
+      margin: 2rem 0 1.5rem;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.6rem 1.2rem 1.4rem;
+      box-shadow: 0 4px 14px rgba(30, 90, 100, 0.04);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+      border: 1px solid #deedf1;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(40, 110, 120, 0.08);
+      border-color: #b1d9e2;
+    }
+    .feature-card .icon {
+      display: inline-block;
+      background: #d6f0f5;
+      color: #0f5f6e;
+      font-size: 1.3rem;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+      border-radius: 18px;
+      margin-bottom: 0.8rem;
+    }
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 550;
+      color: #0f4b5a;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.2rem;
+    }
+    .feature-card p {
+      font-size: 0.92rem;
+      color: #2d4c58;
+    }
+
+    /* 温和结尾 – 引用/提示 */
+    .gentle-end {
+      background: #e3f2f5;
+      border-radius: 28px;
+      padding: 1.8rem 2rem 2rem;
+      margin: 1.4rem 0 2.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+    .gentle-end blockquote {
+      flex: 2 1 240px;
+      font-style: normal;
+      border-left: 3px solid #48a2b5;
+      padding-left: 1rem;
+      color: #154c5a;
+    }
+    .gentle-end blockquote p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    .gentle-end .faq-mini {
+      flex: 1 1 180px;
+      background: white;
+      border-radius: 24px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 2px 8px rgba(28, 84, 94, 0.04);
+    }
+    .gentle-end .faq-mini strong {
+      display: block;
+      color: #0b4a5a;
+      font-weight: 550;
+      margin-bottom: 0.3rem;
+    }
+    .gentle-end .faq-mini p {
+      font-size: 0.9rem;
+      color: #2d5966;
+    }
+
+    /* 场景 / 杂记 */
+    .scene-note {
+      background: white;
+      border-radius: 28px;
+      padding: 1.2rem 2rem;
+      margin: 1rem 0 1.8rem;
+      border-left: 4px solid #90ccd9;
+      color: #1a414e;
+    }
+    .scene-note span {
+      display: inline-block;
+      background: #daf0f5;
+      padding: 0.1rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #105a6a;
+      margin-right: 0.6rem;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      margin-top: auto;
+      padding-top: 1.4rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #527a85;
+      border-top: 1px solid #cfe3e9;
+    }
+    .footer-note a {
+      color: #1d6d7e;
+      text-decoration: none;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 540px) {
+      body { padding: 1.2rem 0.9rem; }
+      .prologue h1 { font-size: 1.7rem; }
+      .bridge { padding: 1.2rem 1.2rem; }
+      .feature-grid { gap: 0.9rem; }
+      .feature-card { padding: 1.2rem 0.9rem; }
+      .gentle-end { padding: 1.2rem 1rem; flex-direction: column; }
+      .gentle-end blockquote { border-left-width: 3px; padding-left: 0.8rem; }
+      .scene-note { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 开场短句 -->
+  <div class="prologue">
+    <span>📋 有序 · 轻索引</span>
+    <h1>关于<em>华体会</em>的信息片段</h1>
+    <div class="tagline">不是大而全的指南，像一本随手翻开的笔记本</div>
+  </div>
+
+  <!-- 承接段落：从资料整理角度切入 -->
+  <div class="bridge">
+    <p>整理信息常常像拼一张没有参考图的拼图。几个月前我重新梳理书签和笔记时，发现关于运动、社区和日常体趣的内容里，<a href="https://main-official-hth.com.cn">华体会</a>是一个反复出现的名字。它不是那种高调的平台，但在索引过程中，我逐渐察觉到它背后有一套稳定的内容框架：从活动记录到基础资讯，条目归类得比较干净。</p>
+    <p>后来我试着把零散的书签归档，把一些常用入口抄在一张纸上 —— 那个阶段对我帮助最大的就是这份“索引感”。分享两个小方法：一是把常用链接按“资讯 / 社区 / 帮助”分类，二是在每个分类下保留简短备注。比如<a href="https://main-official-hth.com.cn">华体会</a>相关的一条记录，我写的是“活动更新 + 资料归档，界面逻辑清晰”。</p>
+  </div>
+
+  <!-- 特点列表：网格卡片 -->
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="icon">📌</div>
+      <h3>条目式整理</h3>
+      <p>信息以卡片或列表呈现，归类和搜索都更直接，减少翻找成本。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🧩</div>
+      <h3>轻量分类</h3>
+      <p>内容层级不复杂，适合日常索引，也适合第一次接触的人上手。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🔄</div>
+      <h3>定期更新标记</h3>
+      <p>留意到部分栏目有版本或时间戳，对于追踪变化很友好。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📎</div>
+      <h3>多入口结构</h3>
+      <p>从不同板块都能回到索引主干，浏览时不容易迷路。</p>
+    </div>
+  </div>
+
+  <!-- 场景侧记：融入生活化语气 -->
+  <div class="scene-note">
+    <span>🗂️ 场景侧记</span>
+    周末整理浏览器标签页，发现里面躺着一条两年前保存的链接。点开以后版面已经更新过，但信息骨架还在。那是一种很踏实的感受 —— 当索引本身保持克制，反而更容易被长期使用。<a href="https://main-official-hth.com.cn">华体会</a>给我的印象类似：不堆砌，但该有的入口一个不少。
+  </div>
+
+  <!-- 温和结尾 + FAQ 摘要 -->
+  <div class="gentle-end">
+    <blockquote>
+      <p>“与其每天刷新大量信息，不如给自己建一个安静的小目录。把常去的地方记下来，把偶尔想起的名字也记下来，慢慢就有了一张属于自己的地图。”</p>
+    </blockquote>
+    <div class="faq-mini">
+      <strong>❓ 常见索引疑问</strong>
+      <p><span style="color:#0f5f6e;">Q：</span> 从哪里开始整理？<br>先列出 3 个你最常访问的板块，然后看看它们之间有没有公共枢纽。</p>
+      <p style="margin-top: 0.4rem;"><span style="color:#0f5f6e;">Q：</span> 链接需要全部点开吗？<br>不必。索引的价值在于“知道这里有什么”，而不是全部浏览。</p>
+    </div>
+  </div>
+
+  <!-- 页脚 (低调自然) -->
+  <div class="footer-note">
+    <span>📖 索引笔记 · 基于公开信息整理</span><br>
+    如果你有补充或希望更新某条记录，欢迎通过<a href="https://main-official-hth.com.cn">华体会</a>页面中的联络渠道留言。
+  </div>
+
+</div>
+</body>
+</html>
