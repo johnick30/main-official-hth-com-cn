@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷速 · 轻快信息流</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: #f8f6f1;
+            color: #2e2b27;
+            line-height: 1.8;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fefcf8;
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+            color: #3d352e;
+            border-left: 5px solid #b8a99a;
+            padding-left: 1.2rem;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #8a7d72;
+            margin-top: 0.5rem;
+            margin-bottom: 2.2rem;
+            padding-left: 1.8rem;
+            font-style: normal;
+        }
+
+        .abstract {
+            background: #f3efe9;
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            margin: 1.8rem 0;
+            font-size: 1.06rem;
+            border: 1px solid #e2d9cf;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .abstract p {
+            margin-bottom: 0.5rem;
+        }
+
+        .abstract strong {
+            color: #5d5045;
+            font-weight: 550;
+        }
+
+        .highlight-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem 2.2rem;
+            margin: 2.6rem 0 2rem 0;
+        }
+
+        .highlight-item {
+            flex: 1 1 180px;
+            min-width: 160px;
+        }
+
+        .highlight-item h3 {
+            font-size: 1.15rem;
+            font-weight: 540;
+            color: #4d4239;
+            margin-bottom: 0.3rem;
+            border-bottom: 2px solid #d6cdc2;
+            padding-bottom: 0.2rem;
+            display: inline-block;
+        }
+
+        .highlight-item p {
+            font-size: 0.98rem;
+            color: #4d4440;
+            margin-top: 0.3rem;
+        }
+
+        .scenario-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .scenario-card {
+            background: #f6f2ec;
+            padding: 1.2rem 1.6rem;
+            border-radius: 18px;
+            flex: 1 1 200px;
+            border: 1px solid #e5dcd2;
+            transition: background 0.2s;
+        }
+
+        .scenario-card:hover {
+            background: #ede6dd;
+        }
+
+        .scenario-card .emoji {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .scenario-card h4 {
+            font-weight: 520;
+            font-size: 1.05rem;
+            color: #3f3730;
+            margin-bottom: 0.2rem;
+        }
+
+        .scenario-card p {
+            font-size: 0.95rem;
+            color: #5e534a;
+        }
+
+        .tip-box {
+            background: #fff8ef;
+            border-left: 4px solid #cbb7a5;
+            padding: 1.4rem 2rem;
+            margin: 2.2rem 0;
+            border-radius: 0 16px 16px 0;
+            font-size: 0.98rem;
+            color: #4d423b;
+        }
+
+        .tip-box strong {
+            color: #5d4b3b;
+        }
+
+        .faq-mini {
+            margin-top: 2.8rem;
+            border-top: 1px solid #e0d6ca;
+            padding-top: 1.8rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dashed #ddd3c7;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #4d3f36;
+            padding: 0.3rem 0;
+            font-size: 1rem;
+        }
+
+        .faq-mini summary:hover {
+            color: #7a685a;
+        }
+
+        .faq-mini details p {
+            margin: 0.5rem 0 0.2rem 1.2rem;
+            color: #5c5149;
+            font-size: 0.95rem;
+        }
+
+        .link-sentence {
+            margin: 2rem 0 1.2rem 0;
+            font-size: 1rem;
+            background: #f3eee8;
+            padding: 1.2rem 1.6rem;
+            border-radius: 20px;
+            text-align: center;
+            color: #3f3730;
+        }
+
+        .link-sentence a {
+            color: #5d4837;
+            text-decoration: none;
+            font-weight: 540;
+            border-bottom: 1.5px solid #b8a392;
+            padding-bottom: 1px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .link-sentence a:hover {
+            color: #332a22;
+            border-bottom-color: #7a6554;
+        }
+
+        footer {
+            margin-top: 2.8rem;
+            font-size: 0.85rem;
+            color: #9e9287;
+            text-align: center;
+            border-top: 1px solid #e4dbd1;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 540px) {
+            .page {
+                padding: 1.8rem 1.2rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                padding-left: 0.8rem;
+            }
+
+            .abstract {
+                padding: 1.2rem 1.2rem;
+            }
+
+            .highlight-grid {
+                gap: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1>雷速 · 信息有质地</h1>
+    <div class="subhead">不追浮光，只取沉淀下来的内容</div>
+
+    <div class="abstract">
+        <p><strong>雷速</strong> 是一处偏安于信息洪流中的站点，它不靠标题夺目，而是把注意力还给阅读本身。这里的内容经过筛选与组织，适合那些希望从日常资讯中提取有效线索的人——无论你是在做决策参考、兴趣探索，还是仅仅想远离浮躁的信息广场。</p>
+        <p>没有跳动的弹窗，也没有催促点击的按钮。页面留给文字和逻辑足够的呼吸空间，让每一次浏览都更像是在翻阅一本安静的刊物。</p>
+    </div>
+
+    <div class="highlight-grid">
+        <div class="highlight-item">
+            <h3>理解优先</h3>
+            <p>每篇文章都围绕一个核心线索展开，不做信息堆砌。如果你讨厌“读完即忘”的体验，这里会更合拍。</p>
+        </div>
+        <div class="highlight-item">
+            <h3>低噪界面</h3>
+            <p>视觉上尽量减少干扰，配色温和，排版留白从容。你可以把注意力完全放在内容上，而不是被各种装饰牵着走。</p>
+        </div>
+        <div class="highlight-item">
+            <h3>持续沉淀</h3>
+            <p>内容并非一次性推送，而是经过梳理与更新。你可以把它当作一个常看常新的资料角，而不是一条过期的新闻流。</p>
+        </div>
+    </div>
+
+    <div class="scenario-box">
+        <div class="scenario-card">
+            <span class="emoji">📖</span>
+            <h4>深度阅读</h4>
+            <p>周末午后，泡杯茶，打开 <a href="https://central-leisu.com" style="color:#5d4837; text-decoration: underline; text-underline-offset:3px; font-weight:500;">雷速</a> 的某一篇长文，让思绪跟着文字走一段。</p>
+        </div>
+        <div class="scenario-card">
+            <span class="emoji">🔍</span>
+            <h4>主题调研</h4>
+            <p>当你想快速了解某个话题的来龙去脉，这里提供的整合视角能帮你省下不少四处翻找的时间。</p>
+        </div>
+        <div class="scenario-card">
+            <span class="emoji">🧘</span>
+            <h4>信息减负</h4>
+            <p>如果你厌倦了社交媒体的碎片轰炸，可以把这里当作一处“低剂量”的信息补给站。</p>
+        </div>
+    </div>
+
+    <div class="tip-box">
+        <strong>💡 一点使用建议：</strong> 不必抱着“读完所有内容”的心态。挑一个你当下真正好奇的主题，点进去慢慢看。好的内容值得反复回味，而不是一次性消费。在 <a href="https://central-leisu.com" style="color:#5d4837; text-decoration: underline; text-underline-offset:2px;">雷速</a>，节奏由你决定。
+    </div>
+
+    <div class="faq-mini">
+        <details>
+            <summary>❓ 雷速的内容更新频率是怎样的？</summary>
+            <p>内容并非每日更新，而是按主题逐步完善。有时一周会有两三次补充，有时会花更长时间打磨一篇。比起数量，更在意每篇内容的完整度。</p>
+        </details>
+        <details>
+            <summary>❓ 我可以在手机上正常阅读吗？</summary>
+            <p>页面针对手机、平板和桌面都做了适配。文字大小、行距和按钮间距都会根据屏幕自动调整，不会出现“字太小”或“布局乱跑”的情况。</p>
+        </details>
+        <details>
+            <summary>❓ 需要注册或登录吗？</summary>
+            <p>目前不需要。所有内容对访客开放，没有会员墙，也不需要留下任何个人信息。打开即读，读完即走。</p>
+        </details>
+    </div>
+
+    <div class="link-sentence">
+        如果你想找一个能让注意力自然沉下来的地方，不妨去 <a href="https://central-leisu.com">雷速</a> 逛逛——那里没有催促，只有内容本身。
+    </div>
+
+    <footer>
+        <span>—— 一次一页，不赶时间 ——</span>
+    </footer>
+</div>
+</body>
+</html>
