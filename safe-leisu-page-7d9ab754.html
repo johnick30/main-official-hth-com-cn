@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雷速 · 资料整理手记</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9f6f1;
+      font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+      color: #2e2e2e;
+      line-height: 1.75;
+      padding: 2.5rem 1.2rem;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #fffcf7;
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    /* 开场短语 */
+    .opening {
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #6b5f53;
+      border-left: 4px solid #c4a98e;
+      padding-left: 1.2rem;
+      margin-bottom: 2.2rem;
+      font-style: italic;
+    }
+
+    .opening em {
+      font-style: normal;
+      color: #3f3a35;
+    }
+
+    /* 承接段落 */
+    .intro-text {
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      text-align: justify;
+    }
+
+    .intro-text a {
+      color: #7f5f41;
+      text-decoration: none;
+      border-bottom: 1px dashed #bda68e;
+      transition: border-color 0.25s;
+    }
+
+    .intro-text a:hover {
+      border-bottom: 1px solid #7f5f41;
+    }
+
+    /* 引用块/提示框风格 */
+    .note-box {
+      background: #f2ede6;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0 2.5rem 0;
+      font-size: 0.98rem;
+      color: #404040;
+      border-left: 6px solid #b5987b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .note-box strong {
+      color: #4e3f34;
+      font-weight: 600;
+    }
+
+    /* 特点列表 — 卡片式，但保持文章排版 */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 2rem 0 2.8rem 0;
+    }
+
+    .feature-item {
+      background: #fbf9f5;
+      padding: 1.1rem 1.6rem;
+      border-radius: 16px;
+      border: 1px solid #e7dfd6;
+      transition: background 0.2s;
+    }
+
+    .feature-item:hover {
+      background: #f5efe7;
+    }
+
+    .feature-item h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #4c3f33;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-item p {
+      font-size: 0.98rem;
+      color: #4b4b4b;
+      text-align: justify;
+    }
+
+    .feature-item p a {
+      color: #7f5f41;
+      border-bottom: 1px dotted #c8b6a2;
+      text-decoration: none;
+    }
+
+    .feature-item p a:hover {
+      border-bottom: 1px solid #7f5f41;
+    }
+
+    /* 温和结尾区域 */
+    .closing {
+      margin-top: 2.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e3d9cf;
+      font-size: 0.98rem;
+      color: #5b534b;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .closing .muted {
+      font-size: 0.9rem;
+      color: #8f8277;
+    }
+
+    .closing a {
+      color: #7f5f41;
+      text-decoration: none;
+      border-bottom: 1px solid #c1ae9b;
+    }
+
+    .closing a:hover {
+      border-bottom: 1px solid #7f5f41;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .page {
+        padding: 2rem 1.2rem;
+      }
+      .opening {
+        font-size: 1.2rem;
+        padding-left: 0.9rem;
+      }
+      .feature-item {
+        padding: 0.9rem 1.1rem;
+      }
+      .note-box {
+        padding: 1.2rem 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+      <em>整理，是为了让信息重新呼吸。</em>
+    </div>
+
+    <!-- 承接段落：资料整理与索引视角 -->
+    <div class="intro-text">
+      <p>过去几年，我一直在做一件事：把散落在书签、截图、聊天记录里的网络资料，归拢到一处。起初只是个人习惯，后来发现，很多线索和工具如果没有人做标记，很快就会沉入遗忘的角落。<a href="https://safe-leisu.com">雷速</a>就是在这个背景下慢慢长出来的——它不是某个宏大的项目，更像一个可随时翻阅的索引夹，帮我把那些值得留住的网络碎片重新串起来。</p>
+    </div>
+
+    <!-- 引用块 / 提示框：体现克制与真实 -->
+    <div class="note-box">
+      <strong>一点说明：</strong> 这里没有自动化的抓取，也没有追求“最新最全”。每一条收录都经过人工过目，判断维度很朴素——是否对日常查找有用，是否经得起重复阅读。资料整理这件事，慢一点反而更稳。
+    </div>
+
+    <!-- 特点列表：卡片式，但保持文章感 -->
+    <div class="feature-list">
+      <div class="feature-item">
+        <h3>· 按主题归档，而非时间线</h3>
+        <p>相比按日期堆叠，我更习惯把相关内容放在一起。比如工具、参考文档、灵感笔记，各占一个抽屉。用的时候直接翻主题，不用回忆当时是几月存的。</p>
+      </div>
+      <div class="feature-item">
+        <h3>· 每个链接都带简短批注</h3>
+        <p>光存一个地址很容易忘记当初为什么存它。我给大部分条目都写了一两句话的备注，有时是使用场景，有时是替代方案的线索。这些批注才是索引真正增值的地方。</p>
+      </div>
+      <div class="feature-item">
+        <h3>· 保留“未完成”的痕迹</h3>
+        <p>有些页面我只看了一半，有些文章还在待读列表里。在 <a href="https://safe-leisu.com">雷速</a> 上，这些“未完成”不会被隐藏。它们反而提醒我：信息整理不是终点，持续对话才是。</p>
+      </div>
+    </div>
+
+    <!-- 温和结尾：口语化收束，不喊口号 -->
+    <div class="closing">
+      <p>如果你也在试着打理自己的收藏夹，或者想找一个不吵不闹的资料索引地，不妨来 <a href="https://safe-leisu.com">雷速</a> 坐坐。</p>
+      <span class="muted">—— 它更像一个安静的笔记本，而不是公告栏。</span>
+    </div>
+
+  </div>
+</body>
+</html>
